@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>闹着玩</title>
+		<style>
+			#box {
+				overflow: hidden;
+			}
+			#box1,#box2 {
+				border: 2px solid #ddd;
+				border-radius: 10px;
+				width: 200px;
+				height: 200px;
+				margin-left: 150px;
+				float: left;
+			}
+			a {
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>闹着玩</h3>
+		<h4>video and audio</h4>
+		<video width="500px" height="400px" controls>
+			<source src="./xxx.ogg" type="video/ogg">
+			<source src="./xxx.mp4" type+"video/mp4">
+		Your browser does not support the video tag.
+		</video>
+		<audio controls>
+			<source src='xx.ogg' type='audio/ogg'>
+			<source src='xx.mp3' type='audio/mp3'>
+		Your browser does not support the audio tag.
+		</audio>
+		<embed src="http://player.youku.com/embed/XNDU0NTIxMTE0MA==" width="500px" height="400px"></embed>
+		<hr />
+		<h3>some new tags</h3>
+		<header>header</header>
+		<nav>nav</nav>
+		<main>
+			main
+			<section>
+				section
+				<article>article</article>
+				<aside>aside</aside>
+			</section>
+		</main>
+		<footer>footer</footer>
+		<figure>figure</figure>
+		<hr />
+		<div id="box">
+			<h4>拖放？</h4>
+			<div id="box1" ondragover="allowDrop(event)" ondrop="drop(event)"><a id="drag" draggable="true" ondragstart="drag(event)">试着拖放本链接吧！</a></div>
+			<div id="box2" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+		</div>
+		<script>
+			function drag(ev){
+				let e = ev || window.event
+				ev.dataTransfer.setData('text', ev.target.id)
+			}
+			function allowDrop(ev){
+				let e = ev || window.event
+				ev.preventDefault()
+			}
+			function drop(ev){
+				let e = ev || window.event
+				let data = ev.dataTransfer.getData('text')
+				ev.target.appendChild(document.getElementById(data))
+			}
+		</script>
+		<hr />
+		<h3>canvas画布与内联svg</h3>
+		<h4>canvas</h4>
+		<div id="amazing">
+			<canvas id="myCanvas" width="800px" height="150px"></canvas>
+		</div>
+		<script type="text/javascript">
+			var c=document.getElementById("myCanvas");
+			var cxt=c.getContext("2d");
+			cxt.fillStyle="#FF0000";
+			cxt.fillRect(0,0,150,75);
+		</script>
+		<h4>svg</h4>
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+ 			<polygon points="100,10 40,180 190,60 10,60 160,180" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;">
+		</svg>
+		<hr />
+		<section>
+			<h3>MathML（兼容性较差，可使用safari和firefox查看效果）</h3>
+			<math xmlns="http://www.w3.org/1998/Math/MathML">
+        				<mrow>
+            					<msup>
+						<mi>a</mi><mn>2</mn>
+					</msup>
+            					<mo>+</mo>
+            					<msup>
+						<mi>b</mi><mn>2</mn>
+					</msup>
+            					<mo>=</mo>
+            					<msup>
+						<mi>c</mi><mn>2</mn>
+					</msup>
+         				</mrow>
+            			</math>
+		</section>
+
+		<hr />
+		<h3>获取地理位置(兼容性不佳)</h3>
+		<p>略，例如可使用navigator.geolocation.getCurrentPosition(position, error);获取当前用户地理位置。内含两个参数，第一个是成功后的处理函数，第二个是失败后的处理函数</p>
+		<hr />
+		<h3>获取网络状态(兼容性不佳)</h3>
+		<button id="btn">是否在线？</button>
+		<script>
+			document.getElementById('btn').onclick = function(){
+				window.ononline = function(){
+					window.alert('在线')
+				}
+				window.onoffline = function(){
+					window.alert('不在线')
+				}
+			}
+		</script>
+		<hr />
+		<h4>关于表单的新增input的type以及元素属性等省略。关于websocket，应用缓存，web存储以及web workers等均略。</h4>
+	</body>
+</html>
