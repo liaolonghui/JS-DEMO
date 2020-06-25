@@ -1,0 +1,40 @@
+ * {
+   padding: 0;
+   margin: 0;
+ }
+ body>div {
+     width: 200px;
+     height: 200px;
+     line-height: 200px;
+     text-align: center;
+     font-weight: bold;
+     text-shadow: 2px 2px 2px red;
+ }
+ .box1 {
+   margin-left: 20px;
+   background-color: yellow;
+   border-radius: 20px 66px 66px 5px;
+   box-shadow: 10px 10px 8px red;
+ }
+ .box2 {
+   margin-top: 30px;
+   margin-left: 20px;
+   background-color: darkgray;
+   border: 30px solid transparent;
+   border-image: url('./o.jpg') stretch;
+   -webkit-border-image: url('./o.jpg') stretch;
+   -o-border-image: url('./o.jpg') stretch;
+   background-image: url('./o.jpg');
+   background-size: cover;
+ }
+ .gradient #linear {
+   height: 200px;
+   /*to right(默认是从上到下，可用英文ringht，botton等改变，也可以使用deg角度改变)*/
+   background-image: linear-gradient(to right, green , blue , red , yellow);
+ }
+ .gradient #radial {
+   height: 200px;
+   width: 200px;
+   /*repeat重复。。。*/
+   background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
+ }
