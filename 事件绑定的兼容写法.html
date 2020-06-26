@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>瞎写一下</title>
+	</head>
+	<body>
+		<h2>别忘了attachEvent()的this指向问题</h2>
+		<button id="btn">你过来啊！</button>
+		<script>
+			var btn = document.getElementById('btn');
+
+			addEvent(btn, 'click', function(){
+				console.log(this.innerHTML)
+			})
+			function addEvent(target, eventType, handler){
+				if(target.addEventListener){
+					target.addEventListener(eventType, handler);
+				}else{
+					target.attachEvent("on"+eventType, function(){  //在匿名函数中再调用handler，此时可传参。
+						handler.call(target);
+					});
+				}
+			}
+		</script>
+	</body>
+</html>
