@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      body {
+        width: 1500px;
+        height: 900px;
+      }
+      #pp {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>仅笔记，markdown用不熟练，先这样吧！</h3>
+
+    <p id="pp">以下均为event对象上的属性或函数:</p>
+
+    <p>bubbles是只读的  false为冒泡  true为不冒泡</p>
+
+    <p>stopPropagation()表示取消事件的进一步冒泡，无返回值。但无法阻止同一事件的其他监听函数(ie8不支持)</p>
+
+    <p>stopImmediatePropagation()既可以阻止冒泡，也可以阻止同一事件的其他监听函数(ie8不支持)</p>
+
+    <p>cancelBubble 用于阻止冒泡的属性 可读写 默认值false  改为ture就可以阻止冒泡</p>
+
+    <button type="button" name="button" id="btn">别点了别点了我不冒泡了还不行吗？</button>
+    <script type="text/javascript">
+      //bubbles cancelBubble stopPropagation() stopImmediatePropagation()
+
+      document.getElementById('btn').onclick = function(ev){
+        ev = ev || window.event;
+        if(ev.stopPropagation){
+          ev.stopPropagation();
+        }else{
+          ev.cancelBubble = ture;
+        }
+        alert('你点击的是button。（如果后面没有别的弹框了，就说明阻止了冒泡。）')
+      }
+      document.body.onclick = function(){
+        prompt('你是点了body触发的我还是冒泡触发的我？')
+      }
+
+      //阻止冒泡的兼容写法
+      var handler = function(ev){
+        ev = ev || window.event;
+        if(ev.stopPropagation){
+          ev.stopPropagation();
+        }else{
+          ev.cancelBubble = ture;
+        }
+      }
+
+
+    </script>
+  </body>
+</html>

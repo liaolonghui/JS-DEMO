@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #box {
+        list-style: none;
+        overflow: hidden;
+        width: 100%;
+        height: 200px;
+        border: 3px solid #000000;
+      }
+      #box li {
+        float: left;
+        width: 200px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #ff0000;
+        margin: 30px 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 关于阻止事件冒泡和阻止默认事件？（略） -->
+    <p>事件委托的方式实现可以提高代码效率，而且未来添加的新li同样也可以触发事件。</p>
+    <ul id="box">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+
+    <script type="text/javascript">
+      window.onload = function(){
+
+        //1.普通方式
+        // let lis = document.getElementsByTagName('li')
+        // for(let i=0; i<lis.length; i++){
+        //   lis[i].onmouseover = function(){
+        //     this.style.backgroundColor = 'yellow';
+        //   }
+        //   lis[i].onmouseout = function(){
+        //     this.style.backgroundColor = 'red'
+        //   }
+        // }
+
+        //2.事件委托（事件代理）
+        let box = document.getElementById('box');
+
+        //模拟未来向ul中添加新的li,实际开发使用ajax
+        setTimeout(function(){
+          let item= document.createElement('li');
+          item.innerHTML = '6';
+          box.appendChild(item);
+        },3000)
+
+        box.onmouseover = function(ev){
+          ev = ev || window;
+          let target = ev.target || ev.srcElement;
+          if(target !== ev.currentTarget){      //ev.currentTarget === this
+            target.style.backgroundColor = 'yellow';
+          }
+        }
+        box.onmouseout = function(ev){
+          ev = ev || window;
+          let target = ev.target || ev.srcElement;
+          if(target !== this){
+            target.style.backgroundColor = 'red';
+          }
+        }
+
+      };
+    </script>
+  </body>
+</html>

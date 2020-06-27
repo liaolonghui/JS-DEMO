@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3>1.使用javascript伪协议</h3>
+    <a href="javascript: void(0);">小袁圈</a>
+    <a href="javascript:;">小袁圈</a>
+
+    <hr />
+
+    <h3>2.使用事件对象中preventDefault() （ie8不支持）  和  returnValue （ff和ie9及以上不支持）。   以及return false;</h3>
+    <a href="https://www.apeland.cn/" target="_blank" id="apeland1">小袁圈</a>
+    <a href="https://www.apeland.cn/" target="_blank" id="apeland2">小袁圈(使用return false;阻止默认事件)</a>
+
+    <script type="text/javascript">
+      var apeland1 = document.getElementById('apeland1');
+      apeland1.onclick = function(ev){
+        ev = ev || window.event;
+        //兼容写法
+        if(ev.preventDefault){
+          ev.preventDefault();
+        }else{
+          ev.returnValue = false;
+        }
+      }
+
+      var apeland2 = document.getElementById('apeland2');
+      apeland2.onclick = function(){
+        return false;
+      }
+    </script>
+
+  </body>
+</html>
