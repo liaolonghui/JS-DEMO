@@ -98,10 +98,10 @@
           mask.style.top = moveY + 'px';
 
           //让大图移动起来
-          //moveX/的大图移动的距离？ =（small_box宽度 - mask宽度）/（big_img宽度 - big_box宽度）
-          //算出比例
+          //moveX/大图移动的宽距离？(未知量) = -（small_box宽度 - mask宽度）/（big_img宽度 - big_box宽度）
+          //算出比例  已移动距离/可移动距离
           let x = moveX/(small_box.offsetWidth - mask.offsetWidth);
-          let y = moveY/(big_img.offsetWidth - big_box.offsetWidth);
+          let y = moveY/(small_box.offsetHeight - mask.offsetHeight);
 
           big_img.style.left = -x * (big_img.offsetWidth - big_box.offsetWidth) + 'px';
           big_img.style.top = -y * (big_img.offsetHeight - big_box.offsetHeight) + 'px';
