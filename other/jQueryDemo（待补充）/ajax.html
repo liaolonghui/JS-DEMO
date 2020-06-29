@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="weather">
+      <h3>北京现在的天气是：</h3>
+      <p class="bjcond_txt">正在获取中，请稍后...</p>
+      <h3>赣州现在的天气是：</h3>
+      <p class="gzcond_txt">正在获取中，请稍后...</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      //get() post()
+      $(function(){
+        $.ajax({
+          url: 'https://free-api.heweather.net/s6/weather/now?location=beijing&key=f17fb165fd8e4b6fa9d6f21931f1592b',
+          method: 'get',
+          success: function(res){
+            console.log(res)
+            var status = res.HeWeather6[0].status;
+            if(status === 'ok'){
+              $('#weather .bjcond_txt').text(res.HeWeather6[0].now.cond_txt);
+            }
+          }
+        })
+
+        $.ajax({
+          url: 'https://free-api.heweather.net/s6/weather/now?location=ganzhou&key=f17fb165fd8e4b6fa9d6f21931f1592b',
+          method: 'get',
+          success: function(res){
+            console.log(res)
+            var status = res.HeWeather6[0].status;
+            if(status === 'ok'){
+              $('#weather .gzcond_txt').text(res.HeWeather6[0].now.cond_txt);
+            }
+          }
+        })
+
+        /*如果是post则：(仅为示例,伪代码无法访问。)
+        $.ajax({
+          url: 'https://free-api.heweather.net/s6/weather/now',
+          method: 'post',
+          data: {
+            username: 'wangwu',
+            password: $('input[type=password]').val()
+          },
+          success: function(res){
+            //......
+          }
+        })
+        */
+
+      })
+    </script>
+  </body>
+</html>
