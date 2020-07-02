@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <header>
+      <section>
+        <form id="form" action="javascript:;">
+          <label for="title">ToDoList</label>
+          <input id="title" type="text" name="title" placeholder="添加ToDo">
+        </form>
+      </section>
+    </header>
+    <section>
+      <h2>正在进行 <span id="todocount"></span></h2>
+      <ol id="todolist" class="demo_box">
+      </ol>
+      <h2>已经完成 <span id="donecount"></span></h2>
+      <ul id="donelist">
+      </ul>
+    </section>
+    <footer>
+      网站:<a href="http://www.todolist.cn" target="_blank" style="color:black; margin-right:100px;">ToDoList</a> <a href="javascript:;" class="clear">清空ToDoList</a>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="./index.js" charset="utf-8"></script>
+  </body>
+</html>
